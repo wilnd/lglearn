@@ -1,0 +1,11 @@
+<configuration>
+    <datasource>
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/lglearn?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="123456"></property>
+    </datasource>
+
+    <mapper resource="UserMapper.xml"></mapper>
+<!--    <mapper resource="ProductMapper.xml"></mapper>-->
+</configuration>

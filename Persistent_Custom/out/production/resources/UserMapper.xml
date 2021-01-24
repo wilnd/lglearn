@@ -1,0 +1,12 @@
+<mapper namespace="com.lglearn.persistent.lesson2.dao.IUserDao">
+    <select id="selectList" resultType="com.lglearn.persistent.lesson2.pojo.User">
+        select * from user
+    </select>
+
+
+    <select id="selectOne" resultType="com.lglearn.persistent.lesson2.pojo.User"
+            parameterType="com.lglearn.persistent.lesson2.pojo.User">
+        select * from user where id = #{id} and username = #{username}
+    </select>
+
+</mapper>

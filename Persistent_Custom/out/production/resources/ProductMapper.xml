@@ -1,0 +1,11 @@
+<mapper namespace="Product">
+    <select id="selectAll">
+        select * from user
+    </select>
+
+
+    <select id="selectById">
+        select * from user where id = ? and username = ?
+    </select>
+
+</mapper>
