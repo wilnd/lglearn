@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--    加载外部properties文件-->
+    <properties resource="jdbc.properties"></properties>
+    <!--    给实体全限定名取别名-->
+    <typeAliases>
+        <!--        给单独实体起别名-->
+<!--        <typeAlias type="com.lglearn.pojo.User" alias="User"/>-->
+        <!--        批量取别名: 该包下所有类本身的别名, 不区分大小写-->
+        <package name="com.lglearn.pojo"/>
+    </typeAliases>
+
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"></transactionManager>
+            <!--            每次使用连接池  POOLED OR UNPOOLED-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+    <!--    引入映射配置文件-->
+    <mappers>
+<!--        <mapper resource="UserMapper.xml"></mapper>-->
+<!--        <mapper resource="OrderMapper.xml"/>-->
+        <package name="com.lglearn.mapper"/>
+    </mappers>
+</configuration>

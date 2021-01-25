@@ -1,4 +1,5 @@
 rootProject.name = 'LagouLearn'
 include 'Persistent_Custom'
 include 'Base'
+include 'mybatis'
 

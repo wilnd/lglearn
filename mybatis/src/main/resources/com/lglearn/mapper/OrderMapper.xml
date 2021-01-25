@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lglearn.mapper.OrderMapper">
+
+    <resultMap id="orderUserMap" type="OrderUser">
+        <result property="id" column="id"/>
+        <result property="ordertime" column="ordertime"/>
+        <result property="total" column="total"/>
+
+        <association property="user" javaType="User">
+            <result property="id" column="uid"/>
+            <result property="username" column="username"/>
+            <result property="password" column="password"/>
+            <result property="birthday" column="birthday"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="userOrderMap" type="UserOrder">
+    <result property="id" column="id"/>
+    <result property="username" column="username"/>
+    <result property="password" column="password"/>
+    <result property="birthday" column="birthday"/>
+
+    <collection property="orders" ofType="Order">
+        <result property="id" column="oid"/>
+        <result property="ordertime" column="ordertime"/>
+        <result property="total" column="total"/>
+        <result property="uid" column="uid"/>
+    </collection>
+</resultMap>
+
+    <resultMap id="userRoleMap" type="UserOrder">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="birthday" column="birthday"/>
+
+        <collection property="roles" ofType="Role">
+            <result property="id" column="roleId"/>
+            <result property="rolename" column="rolename"/>
+            <result property="roleDesc" column="roleDesc"/>
+        </collection>
+    </resultMap>
+
+<!--    resultMap 手动配置实体属性与表字段的映射关系-->
+    <select id="findOrderByUser" resultMap="orderUserMap">
+        select * from orderUsers o , user u where o.uid = u.id
+    </select>
+
+    <select id="findAll" resultMap="userOrderMap">
+        select u.*, o.id oid, o.ordertime, o.total, o.uid
+        from user u left JOIN orders o on o.uid = u.id
+    </select>
+
+    <select id="findAllUser" resultMap="userRoleMap">
+    select u.*, r.id roleId, r.rolename, r.roleDesc
+    FROM user u left join sys_user_role ur on u.id = ur.userid
+    left join sys_role r on ur.roleid = r.id;
+    </select>
+
+</mapper>

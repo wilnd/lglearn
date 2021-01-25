@@ -24,9 +24,6 @@ subprojects {
 
     dependencies {
         compile(
-                "org.projectlombok:lombok:1.18.12",
-                'mysql:mysql-connector-java:8.0.16',
-                'c3p0:c3p0:0.9.1.2', //数据库连接池
                 'com.google.guava:guava:30.0-jre',//java工具
                 'jaxen:jaxen:1.1.1',//java工具
                 'dom4j:dom4j:1.6.1' //xml解析
@@ -35,6 +32,7 @@ subprojects {
         testCompile(
                 'org.junit.jupiter:junit-jupiter-api:5.7.0'
         )
+
     }
 }
 
