@@ -10,6 +10,9 @@ dependencies {
             'mysql:mysql-connector-java:8.0.16',
             'c3p0:c3p0:0.9.1.2', //数据库连接池
             'org.mybatis.caches:mybatis-redis:1.0.0-beta2', //数据库连接池
+            'com.github.pagehelper:pagehelper:5.1.8', //分页插件
+            'com.github.jsqlparser:jsqlparser:1.4', //分页插件需要依赖的jar
+            'tk.mybatis:mapper:3.1.2', //通用mapper
 
             project(':Base')
     )

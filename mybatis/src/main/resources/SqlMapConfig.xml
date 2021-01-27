@@ -9,7 +9,7 @@
     <!--    控制台打印sql日志-->
     <settings>
         <setting name="cacheEnabled" value="true"/>
-        <setting name="logImpl" value="LOG4J2"/>
+        <setting name="logImpl" value="LOG4J"/>
     </settings>
     <!--    给实体全限定名取别名-->
     <typeAliases>
@@ -18,6 +18,13 @@
         <!--        批量取别名: 该包下所有类本身的别名, 不区分大小写-->
         <package name="com.lglearn.pojo"/>
     </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"/>
+        <plugin interceptor="tk.mybatis.mapper.mapperhelper.MapperInterceptor">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+    </plugins>
 
     <environments default="dev">
         <environment id="dev">

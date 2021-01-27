@@ -1,5 +1,8 @@
 package com.lglearn.test;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.lglearn.mapper.IUserMapper;
 import com.lglearn.mapper.OrderMapper;
 import com.lglearn.mapper.OrderUserMapper;
 import com.lglearn.pojo.OrderUser;
@@ -22,6 +25,8 @@ public class OrderTest {
 
     private OrderUserMapper orderUserMapper;
 
+    private IUserMapper iUserMapper;
+
     @BeforeEach
     public void before() throws IOException {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
@@ -30,6 +35,24 @@ public class OrderTest {
 
         orderMapper = sqlSession.getMapper(OrderMapper.class);
         orderUserMapper = sqlSession.getMapper(OrderUserMapper.class);
+        iUserMapper = sqlSession.getMapper(IUserMapper.class);
+    }
+
+    @Test
+    public void mapperTest(){
+        User user = new User();
+        user.setId(1);
+
+        User userDb = iUserMapper.selectOne(user);
+        System.out.println(userDb);
+    }
+
+    @Test
+    public void pageHelperTest(){
+        PageHelper.startPage(1,1);
+        List<User> users = orderMapper.selectUser();
+        PageInfo<User> userPageInfo = new PageInfo<>(users);
+        System.out.println(userPageInfo);
     }
 
     @Test
