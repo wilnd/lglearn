@@ -22,6 +22,8 @@ public class MybatisSourceTest {
         //3. 1)生成DefaultSqlSession对象 2)设置了事物 3)创建了executor
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
+        sqlSession.commit();
+
         //4. 1) 根据statementId从configuration中的mapper集合中获取到指定MappedStatement对象
         //   2) 将查询操作委派给executor执行器
         List<Object> objects = sqlSession.selectList("namespace.id");

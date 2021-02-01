@@ -4,13 +4,12 @@ import com.lglearn.pojo.User;
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.cache.impl.PerpetualCache;
 
 import java.io.IOException;
 import java.util.List;
 
 //具体指定实现二级缓存的实现类
-@CacheNamespace(implementation = org.mybatis.caches.redis.RedisCache.class)
+//@CacheNamespace(implementation = org.mybatis.caches.redis.RedisCache.class)
 public interface UserMapper {
 
     List<User> findAll() throws IOException;

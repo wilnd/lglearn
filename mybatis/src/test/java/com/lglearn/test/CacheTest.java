@@ -56,16 +56,18 @@ public class CacheTest {
         SqlSession sqlSession2 = sqlSessionFactory.openSession();
         SqlSession sqlSession3 = sqlSessionFactory.openSession();
 
-        UserMapper mapper1 = sqlSession1.getMapper(UserMapper.class);
-        UserMapper mapper2 = sqlSession2.getMapper(UserMapper.class);
-        UserMapper mapper3 = sqlSession3.getMapper(UserMapper.class);
+//        sqlSession1.select();
 
-        User user1 = mapper1.findUserById(1);
-        sqlSession1.close();//清空一级缓存
-        User user2 = mapper2.findUserById(1);
-        user2.setUsername("ch");
-        mapper3.updateMyUser(user2);
-        User user3 = mapper3.findUserById(1);
+//        UserMapper mapper1 = sqlSession1.getMapper(UserMapper.class);
+//        UserMapper mapper2 = sqlSession2.getMapper(UserMapper.class);
+//        UserMapper mapper3 = sqlSession3.getMapper(UserMapper.class);
+//
+//        User user1 = mapper1.findUserById(1);
+//        sqlSession1.close();//清空一级缓存
+//        User user2 = mapper2.findUserById(1);
+//        user2.setUsername("ch");
+//        mapper3.updateMyUser(user2);
+//        User user3 = mapper3.findUserById(1);
     }
 
 }
