@@ -2,4 +2,6 @@ rootProject.name = 'LagouLearn'
 include 'Persistent_Custom'
 include 'Base'
 include 'mybatis'
+include 'SpringFrame'
+include 'Spring_Customer'
 
