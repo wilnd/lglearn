@@ -4,6 +4,7 @@ import com.lglearn.factory.BeanFactory;
 import com.lglearn.pojo.Result;
 import com.lglearn.service.TransferService;
 import com.lglearn.utils.JsonUtils;
+import com.lglearn.utils.ProxyFactory;
 import lombok.Setter;
 
 import javax.servlet.ServletException;
@@ -17,9 +18,11 @@ import java.io.IOException;
 public class TransferServlet extends HttpServlet {
 
     // 1. 实例化service层对象
-        private TransferService transferService = (TransferService) BeanFactory.getBean("transferService");
+//        private TransferService transferService = (TransferService) BeanFactory.getBean("transferService");
 //    @Setter
 //    private TransferService transferService;
+
+    private TransferService transferService = (TransferService) ProxyFactory.getInstance().getServiceTransactionProxy((TransferService) BeanFactory.getBean("transferService"));
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

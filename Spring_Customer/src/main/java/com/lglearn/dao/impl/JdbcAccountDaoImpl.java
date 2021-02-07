@@ -2,7 +2,7 @@ package com.lglearn.dao.impl;
 
 import com.lglearn.dao.AccountDao;
 import com.lglearn.pojo.Account;
-import com.lglearn.utils.DruidUtils;
+import com.lglearn.utils.ConnectionUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ public class JdbcAccountDaoImpl implements AccountDao {
     @Override
     public Account queryAccountByCardNo(String cardNo) throws Exception {
         //从连接池获取连接
-        Connection con = DruidUtils.getInstance().getConnection();
+        Connection con = ConnectionUtil.getCurrentThreadCon();
         String sql = "select * from account where cardNo=?";
         PreparedStatement preparedStatement = con.prepareStatement(sql);
         preparedStatement.setString(1, cardNo);
@@ -26,21 +26,19 @@ public class JdbcAccountDaoImpl implements AccountDao {
         }
         resultSet.close();
         preparedStatement.close();
-        con.close();
         return account;
     }
 
     @Override
     public int updateAccountByCardNo(Account account) throws Exception {
         //从连接池获取连接
-        Connection con = DruidUtils.getInstance().getConnection();
+        Connection con = ConnectionUtil.getCurrentThreadCon();
         String sql = "update account set money=? where cardNo=?";
         PreparedStatement preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1, account.getMoney());
         preparedStatement.setString(2, account.getCardNo());
         int i = preparedStatement.executeUpdate();
         preparedStatement.close();
-        con.close();
         return i;
     }
 
