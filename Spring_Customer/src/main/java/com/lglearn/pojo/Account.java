@@ -1,4 +1,4 @@
-package com.lglean.pojo;
+package com.lglearn.pojo;
 
 /**
  * @author 应癫

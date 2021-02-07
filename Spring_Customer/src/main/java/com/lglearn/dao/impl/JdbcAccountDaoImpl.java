@@ -1,8 +1,8 @@
-package com.lglean.dao.impl;
+package com.lglearn.dao.impl;
 
-import com.lglean.dao.AccountDao;
-import com.lglean.pojo.Account;
-import com.lglean.utils.DruidUtils;
+import com.lglearn.dao.AccountDao;
+import com.lglearn.pojo.Account;
+import com.lglearn.utils.DruidUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

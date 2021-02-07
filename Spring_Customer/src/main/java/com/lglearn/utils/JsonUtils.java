@@ -1,4 +1,4 @@
-package com.lglean.utils;
+package com.lglearn.utils;
 
 import java.util.List;
 

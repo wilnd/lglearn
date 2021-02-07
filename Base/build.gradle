@@ -8,6 +8,8 @@ dependencies {
     compile(
             "org.projectlombok:lombok:1.18.12",
             'com.google.guava:guava:30.0-jre',//java工具
+            'org.apache.commons:commons-lang3:3.4',//java工具
+
             'jaxen:jaxen:1.1.1',//java工具
             'dom4j:dom4j:1.6.1', //xml解析
             'com.fasterxml.jackson.core:jackson-databind:2.11.3' //jackson

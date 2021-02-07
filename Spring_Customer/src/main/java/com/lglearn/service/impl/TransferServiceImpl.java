@@ -1,13 +1,14 @@
-package com.lglean.service.impl;
+package com.lglearn.service.impl;
 
-import com.lglean.dao.AccountDao;
-import com.lglean.dao.impl.JdbcAccountDaoImpl;
-import com.lglean.pojo.Account;
-import com.lglean.service.TransferService;
+import com.lglearn.dao.AccountDao;
+import com.lglearn.pojo.Account;
+import com.lglearn.service.TransferService;
+import lombok.Setter;
 
 public class TransferServiceImpl implements TransferService {
 
-    private AccountDao accountDao = new JdbcAccountDaoImpl();
+    @Setter
+    private AccountDao accountDao;
 
     @Override
     public void transfer(String fromCardNo, String toCardNo, int money)

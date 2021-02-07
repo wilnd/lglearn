@@ -1,9 +1,10 @@
-package com.lglean.servlet;
+package com.lglearn.servlet;
 
-import com.lglean.pojo.Result;
-import com.lglean.service.TransferService;
-import com.lglean.service.impl.TransferServiceImpl;
-import com.lglean.utils.JsonUtils;
+import com.lglearn.factory.BeanFactory;
+import com.lglearn.pojo.Result;
+import com.lglearn.service.TransferService;
+import com.lglearn.utils.JsonUtils;
+import lombok.Setter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +17,9 @@ import java.io.IOException;
 public class TransferServlet extends HttpServlet {
 
     // 1. 实例化service层对象
-    private TransferService transferService = new TransferServiceImpl();
+        private TransferService transferService = (TransferService) BeanFactory.getBean("transferService");
+//    @Setter
+//    private TransferService transferService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

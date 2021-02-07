@@ -1,6 +1,6 @@
-package com.lglean.dao;
+package com.lglearn.dao;
 
-import com.lglean.pojo.Account;
+import com.lglearn.pojo.Account;
 
 public interface AccountDao {
 

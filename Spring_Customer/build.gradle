@@ -7,11 +7,10 @@ sourceCompatibility = 1.8
 
 dependencies {
     compile(
+            'mysql:mysql-connector-java:8.0.16',
             'com.alibaba:druid:1.1.10', //连接池
             'javax.servlet:javax.servlet-api:4.0.1', //servlet
-            'jaxen:jaxen:1.1.6', //xpath表达式依赖
             'cglib:cglib:3.3.0', //cglib依赖包
-            'mysql:mysql-connector-java:8.0.16',
 
             project(':Base')
     )
