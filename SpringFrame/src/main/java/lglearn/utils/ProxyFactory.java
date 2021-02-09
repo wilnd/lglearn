@@ -1,15 +1,18 @@
 package lglearn.utils;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Component("proxyFactory")
 public class ProxyFactory {
+
+    @Autowired
+    private TransactionManager transactionManager;
 
     public Object getServiceTransactionProxy(Object paramObj) {
         return Enhancer.create(paramObj.getClass(), new MethodInterceptor() {
@@ -17,11 +20,11 @@ public class ProxyFactory {
             public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
                 Object invokeResult = null;
                 try {
-                    TransactionManager.getInstance().beginTransaction();
+                    transactionManager.beginTransaction();
                     invokeResult = method.invoke(paramObj, args);
-                    TransactionManager.getInstance().commit();
+                    transactionManager.commit();
                 } catch (Exception e) {
-                    TransactionManager.getInstance().rollBack();
+                    transactionManager.rollBack();
                     throw e;
                 }
                 return invokeResult;

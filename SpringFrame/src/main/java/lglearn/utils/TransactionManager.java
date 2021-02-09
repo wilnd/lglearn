@@ -3,35 +3,31 @@ package lglearn.utils;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Component("transactionManager")
 public class TransactionManager {
 
-    private static volatile TransactionManager transactionManager;
-
-    public static synchronized TransactionManager getInstance() {
-        if (transactionManager == null) {
-            transactionManager = new TransactionManager();
-        }
-        return transactionManager;
-    }
+    @Autowired
+    private ConnectionUtil connectionUtil;
 
     public void beginTransaction() throws SQLException {
-        ConnectionUtil.getCurrentThreadCon().setAutoCommit(false);
+        connectionUtil.getCurrentThreadCon().setAutoCommit(false);
     }
 
     public void commit() throws SQLException {
-        ConnectionUtil.getCurrentThreadCon().commit();
+        connectionUtil.getCurrentThreadCon().commit();
     }
 
     public void close() throws SQLException {
-        ConnectionUtil.getCurrentThreadCon().close();
+        connectionUtil.getCurrentThreadCon().close();
     }
 
     public void rollBack() throws SQLException {
-        ConnectionUtil.getCurrentThreadCon().rollback();
+        connectionUtil.getCurrentThreadCon().rollback();
     }
 
 }

@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-    https://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="accountDao" class="lglearn.dao.impl.JdbcAccountDaoImpl" scope="prototype"></bean>
-    <!--一: 实例化bean的方式-->
-    <!--    1. 无参构造 实例化bean-->
-    <bean id="proxyFactory" class="lglearn.utils.ProxyFactory"/>
-    <!--    2. 静态方法实例化bean-->
-    <bean id="transactionManager" class="lglearn.utils.TransactionManager" factory-method="getInstance"/>
-    <!--    3. 实例化方法 需要先顶一个实例化对象, 再调用这个对象的实例化方法(非静态)-->
+    <!--    开启注解扫描-->
+    <context:component-scan base-package="lglearn"/>
 
-    <!--   二. bean的作用范围以及生命周期 通过scope配置, 默认为singleton-->
-    <!--    singletone单例-->
-    <!--    scope 原形-->
-    <bean id="transferService" class="lglearn.service.impl.TransferServiceImpl" scope="singleton">
-        <property name="AccountDao" ref="accountDao"></property>
+    <!--    引入外部资源-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--    第三方jar的bean定义在xml中-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
     </bean>
+
+
 </beans>
