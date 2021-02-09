@@ -5,4 +5,5 @@ include 'mybatis'
 include 'SpringFrame'
 include 'Spring_Customer'
 include 'DesignPattern'
+include 'OnlyXml'
 
