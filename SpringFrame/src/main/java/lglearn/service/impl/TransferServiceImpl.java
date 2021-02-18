@@ -8,12 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service("transferService")
+@Service(value = "TransferService")
 public class TransferServiceImpl implements TransferService {
 
     //Autowired 按照类型注入 如果区分不出来需要结合Qualifier
     @Autowired
-    @Qualifier("accountDao")
     private AccountDao accountDao;
 
     @Override

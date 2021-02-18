@@ -1,26 +1,43 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        https://www.springframework.org/schema/context/spring-context.xsd">
+<!--<?xml version="1.0" encoding="utf-8" ?>-->
+<!--<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:context="http://www.springframework.org/schema/context"-->
+<!--       xmlns:aop="http://www.springframework.org/schema/aop"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xsi:schemaLocation="-->
+<!--        http://www.springframework.org/schema/beans-->
+<!--        https://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--        http://www.springframework.org/schema/context-->
+<!--        https://www.springframework.org/schema/context/spring-context.xsd-->
+<!--         http://www.springframework.org/schema/aop-->
+<!--        https://www.springframework.org/schema/aop/spring-aop-3.0.xsd">-->
 
-    <!--    开启注解扫描-->
-    <context:component-scan base-package="lglearn"/>
+<!--&lt;!&ndash;        开启注解扫描&ndash;&gt;-->
+<!--    <context:component-scan base-package="lglearn"/>-->
 
-    <!--    引入外部资源-->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
+<!--&lt;!&ndash;        引入外部资源&ndash;&gt;-->
+<!--    <context:property-placeholder location="classpath:jdbc.properties"/>-->
 
-    <!--    第三方jar的bean定义在xml中-->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="driverClassName" value="${jdbc.driver}"/>
-        <property name="url" value="${jdbc.url}"/>
-        <property name="username" value="${jdbc.username}"/>
-        <property name="password" value="${jdbc.password}"/>
-    </bean>
+<!--    &lt;!&ndash;    第三方jar的bean定义在xml中&ndash;&gt;-->
+<!--    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--        <property name="driverClassName" value="${jdbc.driver}"/>-->
+<!--        <property name="url" value="${jdbc.url}"/>-->
+<!--        <property name="username" value="${jdbc.username}"/>-->
+<!--        <property name="password" value="${jdbc.password}"/>-->
+<!--    </bean>-->
 
-
-</beans>
+<!--    &lt;!&ndash;    aop 将AOP相关术语落地&ndash;&gt;-->
+<!--    &lt;!&ndash;    使用config标签表明AOP配置,配置切面&ndash;&gt;-->
+<!--    &lt;!&ndash;    <aop:config>&ndash;&gt;-->
+<!--    &lt;!&ndash;        &lt;!&ndash;        可以配置多个AOP&ndash;&gt;&ndash;&gt;-->
+<!--    &lt;!&ndash;        <aop:aspect id="logAspect" ref="logUtils">&ndash;&gt;-->
+<!--    &lt;!&ndash;            &lt;!&ndash;            切入点&ndash;&gt;&ndash;&gt;-->
+<!--    &lt;!&ndash;            <aop:pointcut id="pt1"&ndash;&gt;-->
+<!--    &lt;!&ndash;                          expression="execution(public void lglearn.service.impl.TransferServiceImpl.transfer(String , String , int ))"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;            &lt;!&ndash;            方位信息&ndash;&gt;&ndash;&gt;-->
+<!--    &lt;!&ndash;            <aop:before method="beforeMethod" pointcut-ref="pt1"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </aop:aspect>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </aop:config>&ndash;&gt;-->
+<!--    &lt;!&ndash;    开启AOP注解&ndash;&gt;-->
+<!--    &lt;!&ndash;    proxy-target-class="true" 强制使用cglib&ndash;&gt;-->
+<!--    <aop:aspectj-autoproxy/>-->
+<!--</beans>-->

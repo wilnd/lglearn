@@ -3,13 +3,14 @@ package lglearn.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import java.util.List;
 
 /**
  * JSON工具类（使用的是jackson实现的）
  */
-
+@EnableAspectJAutoProxy //开启AOP纯注解模式
 public class JsonUtils {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();

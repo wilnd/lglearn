@@ -4,13 +4,14 @@ import com.alibaba.druid.pool.DruidDataSource;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@Component("connectionUtil")
+@Component
 public class ConnectionUtil {
 
     @Autowired
