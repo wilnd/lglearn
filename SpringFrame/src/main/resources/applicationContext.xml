@@ -2,6 +2,7 @@
 <!--<beans default-lazy-init="true" xmlns="http://www.springframework.org/schema/beans"-->
 <!--       xmlns:context="http://www.springframework.org/schema/context"-->
 <!--       xmlns:aop="http://www.springframework.org/schema/aop"-->
+<!--       xmlns:tx="http://www.springframework.org/schema/tx"-->
 <!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
 <!--       xsi:schemaLocation="-->
 <!--        http://www.springframework.org/schema/beans-->
@@ -9,12 +10,14 @@
 <!--        http://www.springframework.org/schema/context-->
 <!--        https://www.springframework.org/schema/context/spring-context.xsd-->
 <!--         http://www.springframework.org/schema/aop-->
-<!--        https://www.springframework.org/schema/aop/spring-aop-3.0.xsd">-->
+<!--        https://www.springframework.org/schema/aop/spring-aop-3.0.xsd-->
+<!--        http://www.springframework.org/schema/tx-->
+<!--        https://www.springframework.org/schema/tx/spring-tx.xsd">-->
 
-<!--&lt;!&ndash;        开启注解扫描&ndash;&gt;-->
+<!--    &lt;!&ndash;        开启注解扫描&ndash;&gt;-->
 <!--    <context:component-scan base-package="lglearn"/>-->
 
-<!--&lt;!&ndash;        引入外部资源&ndash;&gt;-->
+<!--    &lt;!&ndash;        引入外部资源&ndash;&gt;-->
 <!--    <context:property-placeholder location="classpath:jdbc.properties"/>-->
 
 <!--    &lt;!&ndash;    第三方jar的bean定义在xml中&ndash;&gt;-->
@@ -40,4 +43,17 @@
 <!--    &lt;!&ndash;    开启AOP注解&ndash;&gt;-->
 <!--    &lt;!&ndash;    proxy-target-class="true" 强制使用cglib&ndash;&gt;-->
 <!--    <aop:aspectj-autoproxy/>-->
+<!--    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+<!--        <constructor-arg name="dataSource" ref="druidDataSource"/>-->
+<!--    </bean>-->
+<!--    <tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+<!--        <tx:attributes>-->
+<!--            &lt;!&ndash;            定义事务细节&ndash;&gt;-->
+<!--            &lt;!&ndash;            一般性配置&ndash;&gt;-->
+<!--            <tx:method name="*" read-only="false" propagation="REQUIRED" isolation="DEFAULT"-->
+<!--                       rollback-for="com.foo.MyBusinessException" timeout="-1"/>-->
+<!--            &lt;!&ndash;            针对查询覆盖式配置&ndash;&gt;-->
+<!--            <tx:method name="query*" read-only="true" propagation="SUPPORTS"/>-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
 <!--</beans>-->

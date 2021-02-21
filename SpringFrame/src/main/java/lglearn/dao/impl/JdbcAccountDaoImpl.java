@@ -12,7 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-@Repository
+@Repository("accountDao")
 public class JdbcAccountDaoImpl implements AccountDao {
 
     @Autowired
