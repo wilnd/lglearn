@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+sourceCompatibility = 1.8
+
+dependencies {
+    compile(
+            'org.springframework:spring-webmvc:5.3.3', //mvc
+            'javax.servlet:javax.servlet-api:4.0.1', //servlet
+
+            project(':Base')
+    )
+}
+
+war{
+
+}
+
+//定义目录结构
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}
