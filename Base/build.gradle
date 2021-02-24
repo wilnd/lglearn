@@ -10,7 +10,9 @@ dependencies {
 
             'jaxen:jaxen:1.1.1',//java工具
             'dom4j:dom4j:1.6.1', //xml解析
-            'com.fasterxml.jackson.core:jackson-databind:2.11.3' //jackson
+            'com.fasterxml.jackson.core:jackson-core:2.11.3', //jackson
+            'com.fasterxml.jackson.core:jackson-databind:2.11.3', //jackson
+            'com.fasterxml.jackson.core:jackson-annotation:2.11.3' //jackson
     )
 }
 

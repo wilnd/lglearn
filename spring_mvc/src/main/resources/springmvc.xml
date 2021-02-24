@@ -19,6 +19,23 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--    处理映射器-->
-    <mvc:annotation-driven/>
+    <!--   自动注册最合适的处理器映射器 处理映射器-->
+    <mvc:annotation-driven conversion-service="conversionService"/>
+
+    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.lglearn.mvc.DateConverter"/>
+            </set>
+        </property>
+    </bean>
+
+    <!--发难一:    拦截静态资源 添加该标签后,会在spring mvc上下文中定义一个DefaultServletHttpRequestHandler对象
+    对进入url进行过滤筛查,如果是静态资源,那么会吧请求转由给web应用服务器(tomcat)的DefaultServlet处理,如果不是静态资源,
+    继续有spring mvc框架处理-->
+    <mvc:default-servlet-handler/>
+    <!--    方案二: springMVC框架自己处理静态资源-->
+    <!--    mapping - 约定的静态资源URL规则-->
+    <!--    location: 指定静态资源存放位置-->
+    <mvc:resources mapping="/resources/**" location="classpath:"/>
 </beans>
